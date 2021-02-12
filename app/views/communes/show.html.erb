@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @commune.name %>
+</p>
+
+<p>
+  <strong>Gain value:</strong>
+  <%= @commune.gain_value %>
+</p>
+
+<%= link_to 'Edit', edit_commune_path(@commune) %> |
+<%= link_to 'Back', communes_path %>

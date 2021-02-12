@@ -1,0 +1,47 @@
+
+<p id="notice"><%= notice %></p>
+
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Formularios de contacto</h1>
+<%= link_to 'Agregar Contacto', new_contact_form_path %>
+
+
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Satos de formularios de contacto</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contact_forms.each do |contact_form| %>
+
+            <tr>
+              <td><%= contact_form.first_name %></td>
+              <td><%= contact_form.last_name %></td>
+              <td><%= contact_form.email %></td>
+              <td><%= contact_form.phone %></td>
+                    <td><%= link_to 'Show', contact_form %>
+              <%= link_to 'Edit', edit_contact_form_path(contact_form) %>
+              <%= link_to 'Destroy', contact_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+
+          <% end %>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
