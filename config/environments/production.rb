@@ -111,7 +111,7 @@ Rails.application.configure do
   # replica.
 
   config.hosts << "back.hogarizate.cl"
-  config.hosts << "hogarizate-prod.us-east-1.elasticbeanstalk.com"
+  config.hosts << "holarizate-production.us-east-1.elasticbeanstalk.com/"
   #
   # By default Rails will store a last write timestamp in the session. The
   # DatabaseSelector middleware is designed as such you can define your own
