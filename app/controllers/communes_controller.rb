@@ -4,7 +4,7 @@ class CommunesController < ApplicationController
 
   # GET /communes or /communes.json
   def index
-    @communes = Commune.all
+    @communes = Commune.all.order(name: :asc)
   end
 
   # GET /communes/1 or /communes/1.json
