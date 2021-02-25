@@ -1,4 +1,5 @@
 class ConstantsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :by_name ]
   before_action :set_constant, only: %i[ show edit update destroy ]
   before_action :set_by_name, only: [ :by_name ]
 
