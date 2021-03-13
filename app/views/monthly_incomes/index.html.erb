@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Monthly Incomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contact form</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th>Main</th>
+      <th>Extra</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monthly_incomes.each do |monthly_income| %>
+      <tr>
+        <td><%= monthly_income.contact_form_id %></td>
+        <td><%= monthly_income.year %></td>
+        <td><%= monthly_income.month %></td>
+        <td><%= monthly_income.date %></td>
+        <td><%= monthly_income.total %></td>
+        <td><%= monthly_income.main %></td>
+        <td><%= monthly_income.extra %></td>
+        <td><%= link_to 'Show', monthly_income %></td>
+        <td><%= link_to 'Edit', edit_monthly_income_path(monthly_income) %></td>
+        <td><%= link_to 'Destroy', monthly_income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Monthly Income', new_monthly_income_path %>

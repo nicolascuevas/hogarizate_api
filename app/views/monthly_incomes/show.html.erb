@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contact form:</strong>
+  <%= @monthly_income.contact_form_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @monthly_income.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @monthly_income.month %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @monthly_income.date %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @monthly_income.total %>
+</p>
+
+<p>
+  <strong>Main:</strong>
+  <%= @monthly_income.main %>
+</p>
+
+<p>
+  <strong>Extra:</strong>
+  <%= @monthly_income.extra %>
+</p>
+
+<%= link_to 'Edit', edit_monthly_income_path(@monthly_income) %> |
+<%= link_to 'Back', monthly_incomes_path %>
