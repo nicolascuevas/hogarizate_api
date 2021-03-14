@@ -19,25 +19,31 @@
       <div class="card-body">
         <%= form_tag(contact_forms_path, method: :get) do %>
           <div class="row">
-            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-2">
+            <div class="col-12 col-xs-4 col-sm-6 col-md-4 col-lg-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Rut</label>
+                <%= text_field_tag 'rut', params[:rut], class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-12 col-xs-4 col-sm-6 col-md-4 col-lg-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Nombre</label>
                 <%= text_field_tag 'first_name', params[:first_name], class: "form-control" %>
               </div>
             </div>
-            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-2">
+            <div class="col-12 col-xs-4 col-sm-6 col-md-4 col-lg-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Apellido</label>
                 <%= text_field_tag 'last_name', params[:last_name], class: "form-control" %>
               </div>
             </div>
-            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-3">
+            <div class="col-12 col-xs-4 col-sm-6 col-md-4 col-lg-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
                 <%= text_field_tag 'email', params[:email], class: "form-control" %>
               </div>
             </div>
-            <div class="col-12 col-xs-6 col-sm-6 col-md-12 col-lg-5">
+            <div class="col-12 col-xs-6 col-sm-12 col-md-8 col-lg-4">
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Ingreso Mensual</label>
@@ -78,20 +84,23 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>First name</th>
-                <th>Last name</th>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
-                <th>Phone</th>
+                <th>Ingreso</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <% @contact_forms.each do |contact_form| %>
 
                 <tr>
+                  <td><%= contact_form.rut %></td>
                   <td><%= contact_form.first_name %></td>
                   <td><%= contact_form.last_name %></td>
                   <td><%= contact_form.email %></td>
-                  <td><%= contact_form.phone %></td>
+                  <td><%= contact_form.average_income.present? ? contact_form.average_income : "N/A" %></td>
                         <td><%= link_to 'Ver', contact_form %>
                   <%= link_to 'Editar', edit_contact_form_path(contact_form) %>
                   <%= link_to 'Borrar', contact_form, method: :delete, data: { confirm: '¿Seguro que queires borrar este contacto?' } %></td>
