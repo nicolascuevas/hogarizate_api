@@ -11,6 +11,10 @@
 				<td><%= @contact_form.rut %></td>
 			</tr>
 			<tr>
+				<th>Identificador</th>
+				<td><%= @contact_form.last_digits %></td>
+			</tr>
+			<tr>
 				<th>Nombre</th>
 				<td><%= @contact_form.first_name %></td>
 			</tr>
@@ -30,8 +34,8 @@
 		</table>
 
 
-		<%= link_to 'Edit', edit_contact_form_path(@contact_form) %> |
-		<%= link_to 'Back', contact_forms_path %>
+		<%= link_to 'Editar', edit_contact_form_path(@contact_form) %> |
+		<%= link_to 'Volver', contact_forms_path %>
 	</div>
 	<div class="col-12 col-md-9">
 		

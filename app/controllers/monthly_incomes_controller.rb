@@ -10,6 +10,10 @@ class MonthlyIncomesController < ApplicationController
   def show
   end
 
+  def incomes_from_floid
+    binding.pry
+  end
+
   # GET /monthly_incomes/new
   def new
     @monthly_income = MonthlyIncome.new

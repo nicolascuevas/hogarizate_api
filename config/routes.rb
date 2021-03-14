@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :monthly_incomes
+  resources :monthly_incomes do
+    collection do
+      post :incomes_from_floid
+    end
+  end
   resources :constants
   resources :contact_forms
   resources :communes

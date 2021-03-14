@@ -5,7 +5,20 @@ class ContactFormsController < ApplicationController
 
   # GET /contact_forms or /contact_forms.json
   def index
+    income_type_query = ">=";
+    if params[:income_type] == "gt"
+      income_type_query = ">=";
+    elsif params[:income_type] == "lt"
+        income_type_query = "<=";
+    elsif params[:income_type] == "et"
+         income_type_query = "="; 
+    end
     @contact_forms = ContactForm.all
+    @contact_forms = @contact_forms.where("rut ilike '%#{params[:rut]}%'") if params[:rut].present?
+    @contact_forms = @contact_forms.where("first_name ilike '%#{params[:first_name]}%'") if params[:first_name].present?
+    @contact_forms = @contact_forms.where("last_name ilike '%#{params[:last_name]}%'") if params[:last_name].present?
+    @contact_forms = @contact_forms.where("email ilike '%#{params[:email]}%'") if params[:email].present?
+    @contact_forms = @contact_forms.where("average_income #{income_type_query} #{params[:income]}") if params[:income].present?
   end
 
   # GET /contact_forms/1 or /contact_forms/1.json

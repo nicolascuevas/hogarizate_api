@@ -17,34 +17,48 @@
         <h6 class="m-0 font-weight-bold text-primary">Filtros</h6>
       </div>
       <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-                <th>Phone</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @contact_forms.each do |contact_form| %>
+        <%= form_tag(contact_forms_path, method: :get) do %>
+          <div class="row">
+            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <%= text_field_tag 'first_name', params[:first_name], class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Apellido</label>
+                <%= text_field_tag 'last_name', params[:last_name], class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-12 col-xs-4 col-sm-4 col-md-4 col-lg-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <%= text_field_tag 'email', params[:email], class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-12 col-xs-6 col-sm-6 col-md-12 col-lg-5">
 
-                <tr>
-                  <td><%= contact_form.first_name %></td>
-                  <td><%= contact_form.last_name %></td>
-                  <td><%= contact_form.email %></td>
-                  <td><%= contact_form.phone %></td>
-                        <td><%= link_to 'Ver', contact_form %>
-                  <%= link_to 'Editar', edit_contact_form_path(contact_form) %>
-                  <%= link_to 'Borrar', contact_form, method: :delete, data: { confirm: '¿Seguro que queires borrar este contacto?' } %></td>
-                </tr>
-
-              <% end %>
-              
-            </tbody>
-          </table>
-        </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Ingreso Mensual</label>
+                <div class="row">
+                  <div class="col-4">
+                    <%= select_tag "income_type", raw("<option value='gt' #{"selected" if params[:income_type] == "gt" }>Mayor igual que</option><option #{"selected" if params[:income_type] == "lt" } value='lt'>Menor igual que</option><option value='et' #{"selected" if params[:income_type] == "et" }>Igual que</option>"), class: "form-control" %>
+                  </div>
+                  <div class="col-8">
+                    <%= text_field_tag 'income', params[:income], class: "form-control" %>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= submit_tag "Buscar", class: "btn btn-info" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
 </div>
