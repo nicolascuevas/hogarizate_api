@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_213541) do
+ActiveRecord::Schema.define(version: 2021_03_15_001200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_213541) do
   end
 
   create_table "monthly_incomes", force: :cascade do |t|
-    t.bigint "contact_form_id", null: false
+    t.integer "contact_form_id"
     t.integer "year"
     t.integer "month"
     t.date "date"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_213541) do
     t.integer "extra"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_digits"
     t.index ["contact_form_id"], name: "index_monthly_incomes_on_contact_form_id"
   end
 

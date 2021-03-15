@@ -45,8 +45,8 @@
 			      <div class="card-body">
 			        <div class="row no-gutters align-items-center">
 			          <div class="col mr-2">
-			            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Ingresos Principales</div>
-			            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+			            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Ingresos Totales</div>
+			            <div class="h5 mb-0 font-weight-bold text-gray-800">$ <%= @contact_form.average_income.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse if @contact_form.average_income.present? %></div>
 			          </div>
 			          <div class="col-auto">
 			            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -55,7 +55,7 @@
 			      </div>
 			  </div>
 			</div>
-			<div class="col-4 col-xs-6">
+<!-- 			<div class="col-4 col-xs-6">
 			    <div class="card border-left-info shadow h-100 py-2">
 			      <div class="card-body">
 			        <div class="row no-gutters align-items-center">
@@ -84,7 +84,7 @@
 			        </div>
 			      </div>
 			  </div>
-			</div>
+			</div> -->
 		</div>
 		<div class="row">
 <div class="col-12">
@@ -107,30 +107,14 @@
 	        </thead>
 
 	        <tbody>
-	          <tr>
-	            <td>Tiger Nixon</td>
-	            <td>System Architect</td>
-	            <td>Edinburgh</td>
-	            <td>61</td>
-	          </tr>
-	          <tr>
-	            <td>Garrett Winters</td>
-	            <td>Accountant</td>
-	            <td>Tokyo</td>
-	            <td>63</td>
-	          </tr>
-	          <tr>
-	            <td>Ashton Cox</td>
-	            <td>Junior Technical Author</td>
-	            <td>San Francisco</td>
-	            <td>66</td>
-	          </tr>
-	          <tr>
-	            <td>Cedric Kelly</td>
-	            <td>Senior Javascript Developer</td>
-	            <td>Edinburgh</td>
-	            <td>22</td>
-	          </tr>
+	        	<% @contact_form.monthly_incomes.where("date is not null").order(date: :desc).each do |income| %>
+					<tr>
+						<td><%= income.date %></td>
+						<td><%= income.main %></td>
+						<td><%= income.extra %></td>
+						<td><%= income.total %></td>
+					</tr>
+	          	<% end %>
 	          
 	        </tbody>
 	      </table>

@@ -1,4 +1,6 @@
 class MonthlyIncomesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:incomes_from_floid]
+  skip_before_action :authenticate_user!, only: [:incomes_from_floid]
   before_action :set_monthly_income, only: %i[ show edit update destroy ]
 
   # GET /monthly_incomes or /monthly_incomes.json
@@ -11,7 +13,8 @@ class MonthlyIncomesController < ApplicationController
   end
 
   def incomes_from_floid
-    binding.pry
+      MonthlyIncome.get_json_from_floid(params["income"]["incomeByMonth"])
+
   end
 
   # GET /monthly_incomes/new

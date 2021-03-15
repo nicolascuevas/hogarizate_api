@@ -23,6 +23,7 @@ class ContactFormsController < ApplicationController
 
   # GET /contact_forms/1 or /contact_forms/1.json
   def show
+    
   end
 
   # GET /contact_forms/new
