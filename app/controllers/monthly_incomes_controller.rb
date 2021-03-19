@@ -13,7 +13,29 @@ class MonthlyIncomesController < ApplicationController
   end
 
   def incomes_from_floid
-      MonthlyIncome.get_json_from_floid(params["income"]["incomeByMonth"])
+
+      if params[:consumerId].present?
+        #when Floid sends the RUT (identifir) and the caseId but not the incomes
+        rut = params[:consumerId].tr(" ", "").tr("-", "")
+        contact_form = ContactForm.where(rut: rut).first
+        contact_form.case_id = params[:caseId]
+        if contact_form.save
+          render json: { "info": "OK", "contact": contact_form }
+        else
+          render json: { "Error": "Rut does not exist" }
+        end
+      else
+        #when floid send the incomes of a contact
+        contact_form = ContactForm.where(case_id: params[:caseId]).first
+        if contact_form
+          if MonthlyIncome.get_json_from_floid(contact_form, params["income"]["incomeByMonth"])
+            render json: { "info": "OK" }
+          end
+        else
+          render json: { "Error": "ERROR - caseId dont exist" }
+        end
+        #MonthlyIncome.get_json_from_floid(params["income"]["incomeByMonth"])
+      end
 
   end
 
