@@ -1,7 +1,7 @@
 class ContactForm < ApplicationRecord
 
 	before_save :save_last_rut_digits
-	has_many :monthly_incomes
+	has_many :monthly_incomes, dependent: :destroy
 
 	def save_last_rut_digits
 		self.rut = self.rut.tr(".", "").tr("-","")
