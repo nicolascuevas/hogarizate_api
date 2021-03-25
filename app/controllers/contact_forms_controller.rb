@@ -41,6 +41,7 @@ class ContactFormsController < ApplicationController
 
     respond_to do |format|
       if @contact_form.save
+        ContactFormMailer.with(contact_form: @contact_form).new_contact_email.deliver_later
         format.html { redirect_to @contact_form, notice: "Contact form was successfully created." }
         format.json { render :show, status: :created, location: @contact_form }
       else

@@ -1,0 +1,19 @@
+
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Nuevo registro hogarizate de <%= @contact_form.first_name %>!</p>
+    <p>
+    Datos Formulario de Contacto<br>
+    --------------------------
+    </p>
+    <p>Rut: <%= @contact_form.rut %></p>
+    <p>Nombre: <%= @contact_form.first_name %> <%= @contact_form.last_name %></p>
+    <p>Email: <%= @contact_form.email %></p>
+    <p>Teléfono: <%= @contact_form.phone %></p>
+
+
+  </body>
+</html>
