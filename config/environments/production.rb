@@ -130,6 +130,7 @@ Rails.application.configure do
 
   config.hosts << "back.hogarizate.cl"
   config.hosts << "holarizate-production.us-east-1.elasticbeanstalk.com"
+  config.hosts << "hogarizate-production.us-east-1.elasticbeanstalk.com"
   config.hosts << "hogarizate-pro.us-east-1.elasticbeanstalk.com"
   config.hosts << "Hogarizateapi-env.eba-mnugfsnm.us-east-1.elasticbeanstalk.com"
   config.hosts << "hogarizate-pro1.us-east-1.elasticbeanstalk.com"
