@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
 
 ruby '2.6.6'
 
@@ -43,6 +43,7 @@ group :test do
 end
 
 group :development, :test do
+  git_source(:github) { |repo| "https://github.com/#{repo}.git" }
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
